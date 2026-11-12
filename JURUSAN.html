@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMKN 1 Gantar - Profil Jurusan</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f4f7fb;
+    color: #172b40;
+}
+
+/* NAVBAR */
+header {
+    background: #102b46;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #32d4d1;
+}
+
+/* HERO */
+.hero {
+    min-height: 470px;
+    background: linear-gradient(120deg, #102b46, #087d91);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 650px;
+    line-height: 1.8;
+    color: #dceaf3;
+}
+
+.hero button {
+    margin-top: 25px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    background: #20c5c6;
+    color: #102b46;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.hero button:hover {
+    background: white;
+}
+
+/* SECTION */
+section {
+    padding: 65px 7%;
+}
+
+.judul {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.judul h2 {
+    font-size: 32px;
+    color: #102b46;
+    margin-bottom: 12px;
+}
+
+.judul p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* JURUSAN */
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    transition: 0.3s;
+    border-bottom: 4px solid #16a6b5;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: #e2f4f7;
+    color: #087d91;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: #102b46;
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+.card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.card button {
+    margin-top: 18px;
+    padding: 10px 15px;
+    background: #102b46;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #087d91;
+}
+
+/* TENTANG */
+.tentang {
+    background: white;
+    text-align: center;
+}
+
+.tentang p {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.9;
+    color: #64748b;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    line-height: 1.8;
+}
+
+.modal-content h2 {
+    color: #087d91;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #536579;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: #102b46;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    line-height: 1.8;
+}
+
+@media(max-width: 900px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 550px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 7px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    section {
+        padding: 50px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SMKN 1 GANTAR</div>
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#jurusan">Jurusan</a>
+        <a href="#tentang">Tentang</a>
+    </nav>
+</header>
+
+<!-- HALAMAN UTAMA -->
+<div class="hero" id="beranda">
+    <h1>SELAMAT DATANG</h1>
+    <h2>SMK NEGERI 1 GANTAR</h2>
+    <p>
+        Kenali berbagai program keahlian di SMKN 1 Gantar.
+        Temukan jurusan yang sesuai dengan minat, bakat,
+        dan cita-citamu untuk membangun masa depan.
+    </p>
+    <button onclick="document.getElementById('jurusan').scrollIntoView()">
+        LIHAT JURUSAN
+    </button>
+</div>
+
+<!-- DAFTAR JURUSAN -->
+<section id="jurusan">
+    <div class="judul">
+        <h2>PROGRAM KEAHLIAN</h2>
+        <p>Kenali 8 jurusan yang tersedia di SMKN 1 Gantar.</p>
+    </div>
+
+    <div class="container" id="daftarJurusan"></div>
+</section>
+
+<!-- TENTANG -->
+<section class="tentang" id="tentang">
+    <div class="judul">
+        <h2>TENTANG SMKN 1 GANTAR</h2>
+    </div>
+
+    <p>
+        SMK Negeri 1 Gantar merupakan sekolah menengah
+        kejuruan yang menyediakan berbagai pilihan program
+        keahlian. Melalui pembelajaran teori dan praktik,
+        peserta didik diharapkan mampu mengembangkan
+        keterampilan, kreativitas, kedisiplinan, dan
+        kompetensi untuk menghadapi dunia kerja maupun
+        melanjutkan pendidikan ke jenjang yang lebih tinggi.
+    </p>
+</section>
+
+<!-- POPUP DETAIL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="tutupModal()">&times;</span>
+        <h2 id="namaModal"></h2>
+        <p id="isiModal"></p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <h3>SMK NEGERI 1 GANTAR</h3>
+    <p>Belajar • Berkarya • Berkompetensi</p>
+    <small>© 2026 SMKN 1 Gantar</small>
+</footer>
+
+<script>
+const jurusan = [
+    {
+        kode: "DKV",
+        nama: "Desain Komunikasi Visual",
+        deskripsi: "Mempelajari desain grafis, ilustrasi, fotografi, tipografi, editing foto dan video, serta pembuatan karya visual kreatif.",
+        karier: "Desainer grafis, ilustrator, fotografer, editor video, dan content creator."
+    },
+    {
+        kode: "RPL",
+        nama: "Rekayasa Perangkat Lunak",
+        deskripsi: "Mempelajari pemrograman, pembuatan website, aplikasi, pengelolaan database, dan pengembangan perangkat lunak.",
+        karier: "Programmer, web developer, software developer, dan pengembang aplikasi."
+    },
+    {
+        kode: "AKKL",
+        nama: "Akuntansi dan Keuangan Lembaga",
+        deskripsi: "Mempelajari pencatatan transaksi, pembukuan, administrasi keuangan, dan penyusunan laporan keuangan.",
+        karier: "Staf akuntansi, staf administrasi, kasir, dan staf keuangan."
+    },
+    {
+        kode: "FI",
+        nama: "Farmasi Industri",
+        deskripsi: "Mempelajari proses produksi sediaan farmasi, pengolahan bahan, pengemasan, pengendalian mutu, serta penerapan standar kebersihan dan keselamatan kerja.",
+        karier: "Operator produksi farmasi, staf pengemasan, dan tenaga pendukung pengendalian mutu."
+    },
+    {
+        kode: "TKR",
+        nama: "Teknik Kendaraan Ringan",
+        deskripsi: "Mempelajari perawatan dan perbaikan mobil, sistem mesin, kelistrikan, rem, transmisi, dan pemeriksaan kendaraan.",
+        karier: "Mekanik mobil, teknisi otomotif, service advisor, dan wirausaha bengkel."
+    },
+    {
+        kode: "TBKR",
+        nama: "Teknik Bodi Kendaraan Ringan",
+        deskripsi: "Mempelajari perbaikan bodi kendaraan, pembentukan panel, pengecatan, dan finishing kendaraan.",
+        karier: "Teknisi bodi kendaraan, teknisi pengecatan, dan pekerja body repair."
+    },
+    {
+        kode: "TP",
+        nama: "Teknik Pengelasan",
+        deskripsi: "Mempelajari teknik pengelasan logam, penggunaan alat las, gambar kerja, pemeriksaan hasil las, dan keselamatan kerja.",
+        karier: "Welder, fabrikator logam, teknisi pengelasan, dan pekerja industri manufaktur."
+    },
+    {
+        kode: "DPIB",
+        nama: "Desain Pemodelan dan Informasi Bangunan",
+        deskripsi: "Mempelajari gambar teknik bangunan, perencanaan konstruksi, pemodelan bangunan, dan aplikasi desain bangunan.",
+        karier: "Drafter bangunan, teknisi gambar konstruksi, dan junior BIM modeler."
+    }
+];
+
+const daftar = document.getElementById("daftarJurusan");
+
+jurusan.forEach((item, index) => {
+    daftar.innerHTML += `
+        <div class="card">
+            <div class="icon">${item.kode}</div>
+            <h3>${item.nama}</h3>
+            <p>${item.deskripsi.substring(0, 100)}...</p>
+            <button onclick="bukaModal(${index})">
+                Selengkapnya
+            </button>
+        </div>
+    `;
+});
+
+function bukaModal(index) {
+    const item = jurusan[index];
+
+    document.getElementById("namaModal").innerText = item.nama;
+
+    document.getElementById("isiModal").innerHTML =
+        "<b>Deskripsi:</b><br>" +
+        item.deskripsi +
+        "<br><br><b>Peluang Karier:</b><br>" +
+        item.karier;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+function tutupModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("modal")) {
+        tutupModal();
+    }
+}
+</script>
+
+</body>
+</html>
